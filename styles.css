@@ -160,6 +160,12 @@ body, html {
         width: calc(50% - 20px);
     }
 
+    .links {
+        justify-content: center; /* Center links on mobile */
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center links horizontally */
+    }
+
     .links a, .pdf-link a {
         font-size: 16px;
         padding: 8px 16px;
