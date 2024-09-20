@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obituary</title>
+    <title>Orrett Franklyn Campbell</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Arsenica+Antique&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -31,22 +31,58 @@
         </header>
         <section class="gallery">
             <div class="collage">
-                <img src="images/1.jpeg" alt="Photo 1">
-                <img src="images/3.jpg" alt="Photo 3">
-                <img src="images/4.jpg" alt="Photo 4">
-                <img src="images/5.jpg" alt="Photo 5">
-                <img src="images/6.jpg" alt="Photo 6">
-                <img src="images/7.jpg" alt="Photo 7">
-                <img src="images/8.jpg" alt="Photo 8">
-                <img src="images/9.jpg" alt="Photo 9">
-                <img src="images/10.jpg" alt="Photo 10">
-                <img src="images/11.jpg" alt="Photo 11">
-                <img src="images/12.jpg" alt="Photo 12">
-                <img src="images/13.jpg" alt="Photo 12">
-                <img src="images/14.jpg" alt="Photo 14">
+                <img src="images/1.jpeg" alt="Photo 1" class="collage-img">
+                <img src="images/3.jpg" alt="Photo 3" class="collage-img">
+                <img src="images/4.jpg" alt="Photo 4" class="collage-img">
+                <img src="images/5.jpg" alt="Photo 5" class="collage-img">
+                <img src="images/6.jpg" alt="Photo 6" class="collage-img">
+                <img src="images/7.jpg" alt="Photo 7" class="collage-img">
+                <img src="images/8.jpg" alt="Photo 8" class="collage-img">
+                <img src="images/9.jpg" alt="Photo 9" class="collage-img">
+                <img src="images/10.jpg" alt="Photo 10" class="collage-img">
+                <img src="images/11.jpg" alt="Photo 11" class="collage-img">
+                <img src="images/12.jpg" alt="Photo 12" class="collage-img">
+                <img src="images/13.jpg" alt="Photo 13" class="collage-img">
+                <img src="images/14.jpg" alt="Photo 14" class="collage-img">
                 <!-- Add more images as needed -->
+            </div>
+            <!-- Modal container -->
+            <div id="imageModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="modalImage">
             </div>
         </section>
     </div>
 </body>
+<script>
+    // Get the modal
+    var modal = document.getElementById("imageModal");
+
+    // Get the modal image element
+    var modalImg = document.getElementById("modalImage");
+
+    // Get the close button
+    var closeBtn = document.getElementsByClassName("close")[0];
+
+    // Add click event to all images with class "collage-img"
+    var images = document.getElementsByClassName("collage-img");
+    for (var i = 0; i < images.length; i++) {
+        images[i].onclick = function() {
+            modal.style.display = "flex"; // Use flex to center the modal
+            modalImg.src = this.src;
+        }
+    }
+
+    // When the user clicks on the close button, close the modal
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal image, close the modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 </html>
