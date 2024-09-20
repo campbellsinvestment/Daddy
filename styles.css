@@ -125,7 +125,7 @@ body, html {
 
 .collage {
     display: grid;
-    grid-template-columns: repeat(2, minmax(200px, 1fr)); /* Adjust columns based on image width */
+    grid-template-columns: repeat(1, minmax(200px, 1fr)); /* Adjust columns based on image width */
     gap: 20px; 
     width: 100%; /* Full viewport width */
     padding: 5px;
