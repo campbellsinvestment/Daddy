@@ -125,6 +125,10 @@ body, html {
     color: #000080; /* Navy blue color */
 }
 
+.links a:hover i.ebook-icon {
+    color: #FFFFFF; 
+}
+
 .gallery {
     text-align: center;
     padding-top: 100px;
