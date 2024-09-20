@@ -36,6 +36,7 @@ body, html {
     align-items: center;
     padding-top: 30px
 }
+
 .image-container {
     position: relative;
     width: 450px; 
@@ -66,7 +67,8 @@ body, html {
 
 .hero-text h1 {
     font-family: 'Alex Brush', cursive;
-    font-size: 45px;
+    font-weight: 560;
+    font-size: 60px;
     margin: 0;
 }
 
@@ -77,7 +79,6 @@ body, html {
 }
 
 .links, .pdf-link {
-  
     white-space: nowrap;
 }
 
@@ -127,7 +128,7 @@ body, html {
     grid-template-columns: repeat(2, minmax(200px, 1fr)); /* Adjust columns based on image width */
     gap: 20px; 
     width: 100%; /* Full viewport width */
-    margin: 0; /* Remove default margin */
+    padding: 10px;
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
@@ -137,6 +138,8 @@ body, html {
     object-fit: cover;
     transition: transform 0.3s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.964);
+    padding: 5px;
+    box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
 .collage img:hover {
@@ -146,6 +149,11 @@ body, html {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+    .hero-text h1 {
+        font-weight: 500;
+        font-size: 45px;
+    }
+
     .hero {
         flex-direction: column;
     }
@@ -162,6 +170,7 @@ body, html {
 
     .collage img {
         width: 100%;
+        padding: 5px;
     }
 
     .links {
@@ -169,15 +178,11 @@ body, html {
         flex-direction: row; /* Keep links side by side */
         align-items: center; /* Center links horizontally */
         width: 100%; /* Ensure the container takes full width */
-        gap:10px;
+        gap: 10px;
     }
 
-    .links a {
-        margin: 10px; /* Add some margin for spacing between links */
-    }
     .links a, .pdf-link a {
         font-size: 16px;
-        padding: 8px 16px;
     }
 
     /* Modal styles */
