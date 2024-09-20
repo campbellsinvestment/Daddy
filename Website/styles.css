@@ -1,0 +1,192 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+.background {
+    background: url('images/background.png') no-repeat center center fixed;
+    background-size: cover;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    flex-wrap: nowrap;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 20px;
+}
+
+.hero .left, .hero .right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px
+}
+.image-container {
+    position: relative;
+    width: 450px; 
+    height: 450px; 
+    background: url('images/ring.png') no-repeat center center;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure the main image does not overflow the container */
+    border-radius: 50%; /* Make the container circular */
+}
+
+.hero .main-image {
+    width: 92%;
+    height: 92%;
+    object-fit: cover;
+    border-radius: 50%; /* Make the image circular */
+}
+
+.hero .hero-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-family: 'Alex Brush', cursive;
+    font-size: 60px;
+    margin: 0;
+}
+
+.hero-text p {
+    font-family: 'Arsenica Antique', serif;
+    font-size: 24px;
+    margin: 0;
+}
+
+.links, .pdf-link {
+    margin: 0 10px;
+    white-space: nowrap;
+}
+
+.links a, .pdf-link a {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    border: 2px solid #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-flex;
+    align-items: center;
+}
+
+.links a i {
+    margin-right: 8px;
+}
+
+.links a i.fab.fa-youtube {
+    color: #FF0000; 
+}
+
+.links a:hover i.fab.fa-youtube {
+    color: #FFFFFF; 
+}
+
+.links a:hover, .pdf-link a:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.gallery {
+    text-align: center;
+    padding-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+.collage {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr)); /* Adjust columns based on image width */
+    gap: 0; /* No space between images */
+    width: 100%; /* Full viewport width */
+    margin: 0; /* Remove default margin */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    gap: 5px;
+}
+
+.collage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.964);
+}
+
+.collage img:hover {
+    transform: scale(1.05);
+    z-index: 1; /* Bring the hovered image to the front */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+    }
+
+    .collage {
+        grid-template-columns: repeat(2, minmax(150px, 1fr)); /* Adjust columns for smaller screens */
+    }
+
+    .image-container {
+        width: 400px; /* Adjust based on your ring image size */
+        height: 400px; /* Adjust based on your ring image size */
+    }
+
+    .collage img {
+        width: calc(50% - 20px);
+    }
+
+    .links a, .pdf-link a {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .collage {
+        grid-template-columns: repeat(2, minmax(100px, 1fr)); /* Adjust columns for very small screens */
+    }
+
+    .image-container {
+        width: 300px; /* Adjust based on your ring image size */
+        height: 300px; /* Adjust based on your ring image size */
+    }
+
+    .hero .main-image {
+        width: 90%;
+        height: 90%;
+    }
+
+    .collage img {
+        width: calc(100% - 20px);
+    }
+
+    .links a, .pdf-link a {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}
