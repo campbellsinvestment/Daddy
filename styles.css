@@ -77,7 +77,7 @@ body, html {
 }
 
 .links, .pdf-link {
-    margin: 0 10px;
+  
     white-space: nowrap;
 }
 
@@ -110,26 +110,28 @@ body, html {
     color: #fff;
 }
 
+/* Default styles for links */
+.links {
+    display: flex;
+    justify-content: flex-end; /* Right-align links on desktop */
+    gap: 20px;
+}
+
 .gallery {
     text-align: center;
     padding-top: 100px;
-    padding-left: 20px;
-    padding-right: 20px;
-
 }
 
 .collage {
     display: grid;
     grid-template-columns: repeat(2, minmax(200px, 1fr)); /* Adjust columns based on image width */
-    gap: 0; /* No space between images */
+    gap: 20px; 
     width: 100%; /* Full viewport width */
     margin: 0; /* Remove default margin */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    gap: 5px;
 }
 
 .collage img {
-    width: calc(50% - 20px);
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -148,10 +150,6 @@ body, html {
         flex-direction: column;
     }
 
-    .collage {
-        grid-template-columns: repeat(2, minmax(150px, 1fr)); /* Adjust columns for smaller screens */
-    }
-
     .image-container {
         width: 400px; /* Adjust based on your ring image size */
         height: 400px; /* Adjust based on your ring image size */
@@ -168,10 +166,15 @@ body, html {
 
     .links {
         justify-content: center; /* Center links on mobile */
-        flex-direction: column; /* Stack links vertically */
+        flex-direction: row; /* Keep links side by side */
         align-items: center; /* Center links horizontally */
+        width: 100%; /* Ensure the container takes full width */
+        gap:10px;
     }
 
+    .links a {
+        margin: 10px; /* Add some margin for spacing between links */
+    }
     .links a, .pdf-link a {
         font-size: 16px;
         padding: 8px 16px;
@@ -188,7 +191,6 @@ body, html {
         height: 100%; /* Full height */
         overflow: auto; /* Enable scroll if needed */
         background-color: rgba(0, 0, 0, 0.9); /* Black background with opacity */
-        display: flex; /* Use flexbox for centering */
         justify-content: center; /* Center horizontally */
         align-items: center; /* Center vertically */
     }
