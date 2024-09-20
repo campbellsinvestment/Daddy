@@ -106,6 +106,7 @@ body, html {
     color: #FFFFFF; 
 }
 
+
 .links a:hover, .pdf-link a:hover {
     background-color: #000;
     color: #fff;
@@ -116,6 +117,12 @@ body, html {
     display: flex;
     justify-content: flex-end; /* Right-align links on desktop */
     gap: 20px;
+    flex-wrap: wrap; /* Allow links to wrap */
+}
+
+/* Specific style for the e-book icon */
+.links a i.ebook-icon {
+    color: #000080; /* Navy blue color */
 }
 
 .gallery {
@@ -148,6 +155,20 @@ body, html {
 }
 
 /* Responsive Styles */
+@media (max-width: 1200px) {
+    .links a, .pdf-link a {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 992px) {
+    .links a, .pdf-link a {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}
+
 @media (max-width: 768px) {
     .hero-text h1 {
         font-weight: 500;
@@ -179,10 +200,12 @@ body, html {
         align-items: center; /* Center links horizontally */
         width: 100%; /* Ensure the container takes full width */
         gap: 10px;
+        flex-wrap: wrap; /* Allow links to wrap */
     }
 
     .links a, .pdf-link a {
         font-size: 16px;
+        padding: 4px 8px;
     }
 
     /* Modal styles */
