@@ -25,15 +25,15 @@
     <div class="background">
         <div class="header">
             <div class="links">
-                <a href="https://www.youtube.com/live/7E_BauG3gjk" target="_blank"><i class="fab fa-youtube"></i> Watch Funeral Stream</a>
+                <a href="https://www.youtube.com/live/7E_BauG3gjk" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> Watch Funeral Stream</a>
                 <a href="images/funeral_program.pdf" target="_blank"><i class="fas fa-file-pdf"></i> View Funeral Program</a>
-                <a href="https://www.amazon.com/STORM-SURVIVOR-experience-diagnosed-metastatic/dp/B0BW358D7Y" target="_blank"><i class="fas fa-book ebook-icon"></i> Orrett's Book</a>
+                <a href="https://www.amazon.com/STORM-SURVIVOR-experience-diagnosed-metastatic/dp/B0BW358D7Y" target="_blank" rel="noopener"><i class="fas fa-book ebook-icon"></i> Orrett's Book</a>
             </div>
         </div>
         <header class="hero">
             <div class="left">
                 <div class="image-container">
-                    <img src="images/orrett.jpg" alt="Main Image" class="main-image">
+                    <img src="images/orrett.jpg" alt="Orrett Franklyn Campbell" class="main-image">
                 </div>
             </div>
             <div class="right">
@@ -152,16 +152,20 @@
                 <img src="images/57.jpg" alt="Photo 57" class="collage-img">
                 <img src="images/59.jpg" alt="Photo 59" class="collage-img">
                 <img src="images/60.jpeg" alt="Photo 60" class="collage-img">
-                <!-- Add more images as needed -->
             </div>
             <!-- Modal container -->
             <div id="imageModal" class="modal">
                 <span class="close">&times;</span>
-                <img class="modal-content" id="modalImage">
+                <img class="modal-content" id="modalImage" alt="Enlarged photo">
             </div>
         </section>
     </div>
-</body>
+    
+    <!-- Scroll to top button -->
+    <div class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
 <script>
     // Get the modal
     var modal = document.getElementById("imageModal");
@@ -192,5 +196,23 @@
             modal.style.display = "none";
         }
     }
+    
+    // Scroll to top functionality
+    const scrollTopBtn = document.querySelector('.scroll-top');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.style.display = 'block';
+        } else {
+            scrollTopBtn.style.display = 'none';
+        }
+    });
+    
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 </script>
 </html>

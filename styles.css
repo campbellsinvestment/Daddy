@@ -3,22 +3,39 @@ body, html {
     padding: 0;
     font-family: Arial, sans-serif;
     height: 100%;
+    scroll-behavior: smooth;
+    background: url('images/background.png') no-repeat center center fixed;
+    background-size: cover;
 }
 
 .background {
-    background: url('images/background.png') no-repeat center center fixed;
-    background-size: cover;
     padding: 20px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    animation: fadeIn 1.2s ease-in-out;
+    max-width: 1800px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .header {
     display: flex;
     justify-content: flex-end;
-    padding: 10px;
+    padding: 10px 5px;
     flex-wrap: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: transparent;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .hero {
@@ -27,6 +44,12 @@ body, html {
     justify-content: space-between;
     flex-wrap: wrap;
     padding-top: 20px;
+    animation: slideUp 1s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 .hero .left, .hero .right {
@@ -34,7 +57,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 30px
+    padding-top: 30px;
 }
 
 .image-container {
@@ -46,15 +69,22 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Ensure the main image does not overflow the container */
-    border-radius: 50%; /* Make the container circular */
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease;
+}
+
+.image-container:hover {
+    transform: scale(1.02);
 }
 
 .hero .main-image {
     width: 92%;
     height: 92%;
     object-fit: cover;
-    border-radius: 50%; /* Make the image circular */
+    border-radius: 50%;
+    transition: transform 0.5s ease;
 }
 
 .hero .hero-text {
@@ -70,12 +100,15 @@ body, html {
     font-weight: 560;
     font-size: 60px;
     margin: 0;
+    color: #333;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 .hero-text p {
     font-family: 'Arsenica Antique', serif;
     font-size: 20px;
-    margin: 0;
+    margin: 10px 0 0;
+    color: #555;
 }
 
 .links, .pdf-link {
@@ -89,9 +122,12 @@ body, html {
     border: 2px solid #000;
     padding: 10px 20px;
     border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
+    transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .links a i {
@@ -106,23 +142,24 @@ body, html {
     color: #FFFFFF; 
 }
 
-
 .links a:hover, .pdf-link a:hover {
     background-color: #000;
     color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 /* Default styles for links */
 .links {
     display: flex;
-    justify-content: flex-end; /* Right-align links on desktop */
+    justify-content: flex-end;
     gap: 20px;
-    flex-wrap: wrap; /* Allow links to wrap */
+    flex-wrap: wrap;
 }
 
 /* Specific style for the e-book icon */
 .links a i.ebook-icon {
-    color: #000080; /* Navy blue color */
+    color: #000080;
 }
 
 .links a:hover i.ebook-icon {
@@ -131,34 +168,125 @@ body, html {
 
 .gallery {
     text-align: center;
-    padding-top: 100px;
+    padding-top: 60px;
+    width: 100%;
+    margin: 0 auto;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 .collage {
     display: grid;
-    grid-template-columns: repeat(1, minmax(200px, 1fr)); /* Adjust columns based on image width */
-    gap: 20px; 
-    width: 100%; /* Full viewport width */
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    width: 100%;
     padding: 5px;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    box-sizing: border-box;
 }
 
-.collage img {
+.collage-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 0.8/1;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.collage-img:hover {
+    transform: scale(1.03);
+    z-index: 2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.964);
-    padding: 20px;
-    box-sizing: border-box; /* Include padding in the element's total width and height */
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
 }
 
-.collage img:hover {
-    transform: scale(1.05);
-    z-index: 1; /* Bring the hovered image to the front */
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    object-fit: contain;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    opacity: 0.8;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    opacity: 1;
+}
+
+/* Add a scroll-to-top button */
+.scroll-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    z-index: 99;
+    transition: all 0.3s ease;
+}
+
+.scroll-top:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: translateY(-3px);
 }
 
 /* Responsive Styles */
+@media (min-width: 1201px) {
+    .collage {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .collage {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 991px) {
+    .collage {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 @media (max-width: 1200px) {
     .links a, .pdf-link a {
         font-size: 16px;
@@ -184,82 +312,43 @@ body, html {
     }
 
     .image-container {
-        width: 400px; /* Adjust based on your ring image size */
-        height: 400px; /* Adjust based on your ring image size */
+        width: 350px;
+        height: 350px;
     }
 
     .collage {
-        grid-template-columns: 1fr; /* One image per row */
-    }
-
-
-    .collage img {
-        width: 100%;
-        padding: 5px;
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .links {
-        justify-content: center; /* Center links on mobile */
-        flex-direction: row; /* Keep links side by side */
-        align-items: center; /* Center links horizontally */
-        width: 100%; /* Ensure the container takes full width */
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
         gap: 10px;
-        flex-wrap: wrap; /* Allow links to wrap */
+        flex-wrap: wrap;
     }
 
     .links a, .pdf-link a {
         font-size: 16px;
         padding: 4px 8px;
     }
+}
 
-    /* Modal styles */
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1000; /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgba(0, 0, 0, 0.9); /* Black background with opacity */
-        justify-content: center; /* Center horizontally */
-        align-items: center; /* Center vertically */
-    }
-
-    .modal-content {
-        margin: auto;
-        display: block;
-        max-width: 90%;
-        max-height: 90%;
-    }
-
-    .close {
-        position: absolute;
-        top: 20px;
-        right: 35px;
-        color: #fff;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
+@media (max-width: 576px) {
+    .collage {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 480px) {
     .collage {
-        grid-template-columns: 1fr; /* One image per row */
+        grid-template-columns: repeat(1, 1fr);
     }
-
+    
     .image-container {
-        width: 300px; /* Adjust based on your ring image size */
-        height: 300px; /* Adjust based on your ring image size */
+        width: 280px;
+        height: 280px;
     }
 
     .hero .main-image {
@@ -267,13 +356,16 @@ body, html {
         height: 90%;
     }
 
-    .collage img {
-        width: 100%;
-        padding: 5px;
-    }
-
     .links a, .pdf-link a {
         font-size: 14px;
         padding: 6px 12px;
+    }
+    
+    .hero-text h1 {
+        font-size: 36px;
+    }
+    
+    .hero-text p {
+        font-size: 16px;
     }
 }
